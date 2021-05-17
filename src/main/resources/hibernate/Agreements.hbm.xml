@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.Agreements" table="Agreements" >
+        <id name="ident" type="java.lang.Integer" unsaved-value="null" >
+            <column name="ident" not-null="true" />
+            <generator class="native"/>
+        </id>
+        <many-to-one name="awarded" class="com.ritchey.timesheet.model.Awarded" fetch="select">
+            <column name="AwardId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="codeJobs" class="com.ritchey.timesheet.model.Job" lazy="false" fetch="join">
+            <column name="Job" length="6" not-null="true" />
+        </many-to-one>
+        <property name="lastUpdate" type="timestamp">
+            <column name="lastUpdate" length="23" />
+        </property>
+        <property name="amount" type="java.lang.Integer">
+            <column name="amount" />
+        </property>
+        <property name="rate" type="java.lang.Integer">
+            <column name="rate"  not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" sql-type="bit" not-null="true" />
+        </property>
+        <property name="positionId" type="string">
+        	<column name="positionId" length="9" not-null="false"  sql-type="nvarchar"/>
+        </property>
+        <set name="timesheetses" inverse="true">
+            <key>
+                <column name="AgreementId" not-null="true" />
+            </key>
+            <one-to-many class="com.ritchey.timesheet.model.Timesheets" />
+        </set>
+    </class>
+</hibernate-mapping>

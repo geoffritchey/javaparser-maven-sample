@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.Supervisor" table="supervisor">
+        <id name="id" type="java.lang.Integer" unsaved-value="null" >
+        	<column name="id" not-null="true" ></column>
+            <generator class="native" />
+        </id>
+        <many-to-one name="job" lazy="false" class="com.ritchey.timesheet.model.Job">
+            <column name="jobId" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="fulltime" type="java.lang.Integer">
+            <column name="fulltime" />
+        </property>
+        
+        <many-to-one name="people" lazy="false"
+        		class="com.ritchey.timesheet.model.PeopleProperties" 
+        		unique="true" not-null="true" property-ref="peopleId">
+            <column name="people_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

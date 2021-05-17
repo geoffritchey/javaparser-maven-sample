@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.PeopleBasic" table="people">
+        <id name="peopleId" type="string">
+            <column name="people_id" length="9"  sql-type="nvarchar"/>
+            <generator class="assigned" />
+        </id>
+        <property name="lastName" type="string">
+            <column name="last_name" length="30"  sql-type="nvarchar"/>
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="30"  sql-type="nvarchar"/>
+        </property>
+        <property name="middleName" type="string">
+            <column name="middle_name" length="30"  sql-type="nvarchar"/>
+        </property>
+        <property name="governmentId" type="string">
+            <column name="government_id" length="9" not-null="true"  sql-type="nvarchar"/>
+        </property>
+    </class>
+</hibernate-mapping>

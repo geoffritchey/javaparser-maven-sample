@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.PeopleProperties" table="people">
+        <id name="id" type="java.lang.Integer" unsaved-value="null" >
+        	<column name="id" not-null="true" ></column>
+            <generator class="native" />
+        </id>
+        <property name="peopleId" type="string" unique="true">
+            <column name="people_id" length="9" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="30" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="30" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="middle_name" length="30" />
+        </property>
+        <property name="governmentId" type="string">
+            <column name="government_id" length="9" not-null="true" />
+        </property>
+        <property name="active" type="java.lang.Boolean">
+            <column name="active" not-null="true" />
+        </property>
+        <property name="dynamicId" type="string">
+            <column name="dynamic_id" length="9" not-null="false" />
+        </property>
+        <property name="passcode" type="string">
+            <column name="passcode" length="10" not-null="false" />
+        </property>
+        <property name="workRegion" type="java.lang.Long">
+            <column name="work_region" not-null="false" />
+        </property>
+        <set name="fulltimeAgreements" inverse="true" lazy="false">
+            <key>
+                <column name="people" not-null="true" />
+            </key>
+            <one-to-many class="com.ritchey.timesheet.model.FulltimeAgreements" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.HoursWorked" table="hours_worked">
+
+        <id name="hoursWorkedId" type="java.lang.Integer" unsaved-value="null" >
+            <column name="hours_worked_id" not-null="true" />
+            <generator class="native"/>
+        </id>
+        
+        <property name="peopleId" type="string" >
+            <column name="people_id" length="9" />
+        </property>
+        
+        <many-to-one name="job" class="com.ritchey.timesheet.model.Job" 
+        		unique="true" not-null="true" property-ref="department">
+            <column name="Job" length="6"/>
+        </many-to-one>
+        
+        <property name="punched" type="timestamp">
+            <column name="punched" length="23" />
+        </property>
+        <many-to-one name="workcode" class="com.ritchey.timesheet.model.WorkCode" 
+        		unique="true" not-null="true" property-ref="code">
+            <column name="workcode" length="6"/>
+        </many-to-one>
+        <property name="punchedOut" type="timestamp">
+            <column name="punched_out" length="23" />
+        </property>
+        <property name="approved" type="timestamp">
+            <column name="approved" length="23" />
+        </property>
+        <property name="approvedBy" type="string">
+            <column name="approved_by" length="9" />
+        </property>
+        <property name="processed" type="java.lang.Integer">
+            <column name="processed" />
+        </property>
+        <property name="timesheetId" type="java.lang.Integer">
+            <column name="timesheet_id" />
+        </property>
+        <property name="fulltime" type="boolean">
+            <column name="fulltime" sql-type="bit" not-null="true" />
+        </property>
+        <property name="lastUpdateBy" type="string">
+            <column name="last_update_by" length="9" />
+        </property>
+
+    </class>
+</hibernate-mapping>

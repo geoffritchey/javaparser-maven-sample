@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping package="com.ritchey.timesheet.model">
+    <class name="CodeTerm" table="code_terms" lazy="false">
+        <id name="termId" type="java.lang.Integer" unsaved-value="null">
+            <column name="termId" not-null="true" />
+             <generator class="native" />
+        </id>
+        <property name="term" type="string" >
+            <column name="term" length="10" />
+        </property>
+        <set name="awardeds" inverse="true">
+            <key>
+                <column name="Term" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Awarded" />
+        </set>
+        <set name="payPers" inverse="true">
+            <key>
+                <column name="Term" length="2" not-null="true" />
+            </key>
+            <one-to-many class="PayPer" />
+        </set>
+    </class>
+</hibernate-mapping>

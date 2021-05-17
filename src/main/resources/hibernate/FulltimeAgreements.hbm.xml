@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 6, 2009 2:53:47 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.FulltimeAgreements" table="fulltime_agreements" >
+        <id name="id" type="java.lang.Integer" unsaved-value="null">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="people" class="com.ritchey.timesheet.model.PeopleProperties" fetch="select">
+            <column name="people" not-null="true" />
+        </many-to-one>
+        <many-to-one name="job" lazy="false" class="com.ritchey.timesheet.model.Job" fetch="select">
+            <column name="department" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="active" type="boolean">
+            <column name="active" sql-type="bit" not-null="true" />
+        </property>
+        <property name="rate" type="int">
+            <column name="rate" precision="10" not-null="true" />
+        </property>
+        <property name="overtime" type="int">
+            <column name="overtime" precision="10" not-null="true" />
+        </property>
+        <property name="parttime" type="boolean">
+            <column name="parttime" sql-type="bit" not-null="true" />
+        </property>
+        <property name="positionId" type="string">
+        	<column name="positionId" length="9" not-null="false"  sql-type="nvarchar"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+    <class name="com.ritchey.timesheet.model.Job"  table="code_jobs">
+     	<id name="id" unsaved-value="0" >
+            <generator class="identity" />
+        </id>
+		<property name="department" column="department" length="6" not-null="true" unique="true"/>
+        <property name="description" column="description" length="35" not-null="false"/>
+        <property name="accountNumber" column="account_number" length="20" not-null="false"/>
+        <property name="active" column="active" type="boolean"/>
+		<set name="supervisors" inverse="true" lazy="false">
+            <key>
+                <column name="jobId" not-null="true" />
+            </key>
+            <one-to-many class="com.ritchey.timesheet.model.Supervisor" />
+        </set>
+    </class>
+</hibernate-mapping>

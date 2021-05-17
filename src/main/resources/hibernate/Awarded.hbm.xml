@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.Awarded" table="Awarded">
+        <id name="ident" type="java.lang.Integer" unsaved-value="null" >
+            <column name="ident"  not-null="true" />
+            <generator class="native"/>
+        </id>
+        <many-to-one name="codeTerm" class="com.ritchey.timesheet.model.CodeTerm" fetch="select">
+            <column name="Term" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="person" property-ref="peopleId" class="com.ritchey.timesheet.model.PeopleProperties" fetch="select">
+            <column name="people_id" length="9" not-null="true" />
+        </many-to-one>
+        <property name="year" type="string">
+            <column name="Year" length="4" not-null="true" />
+        </property>
+        <many-to-one name="awards" class="com.ritchey.timesheet.model.Awards" 
+        		lazy="false" fetch="join">
+            <column name="`Award Code`" length="6" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="double">
+            <column name="Amount" precision="15" scale="0" not-null="true" />
+        </property>
+        <property name="statusCode" type="string">
+            <column name="`Status Code`" length="1" />
+        </property>
+        <property name="statusDate" type="timestamp">
+            <column name="`Status Date`" length="23" />
+        </property>
+        <property name="comment" type="string">
+            <column name="Comment" length="1000" />
+        </property>
+        <property name="lastTs" type="timestamp">
+            <column name="LastTS" length="23" />
+        </property>
+        <set name="agreementses" inverse="true" >
+            <key>
+                <column name="AwardId" not-null="true" />
+            </key>
+            <one-to-many class="com.ritchey.timesheet.model.Agreements" />
+        </set>
+    </class>
+</hibernate-mapping>

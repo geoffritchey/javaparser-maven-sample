@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.Awards" table="awards">
+        <id name="awardCode" type="string">
+            <column name="`Award Code`" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="awardTitle" type="string">
+            <column name="`Award Title`" length="35" not-null="true" unique="true" />
+        </property>
+        <property name="longTitle" type="string">
+            <column name="`Long Title`" length="60" />
+        </property>
+        <property name="ledger" type="string">
+            <column name="Ledger" length="10" />
+        </property>
+        <property name="activeAward" type="boolean">
+            <column name="`Active Award`" not-null="true" />
+        </property>
+        <property name="isWorkStudy" type="boolean">
+            <column name="isWorkStudy" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

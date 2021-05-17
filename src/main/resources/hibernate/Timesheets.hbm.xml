@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.Timesheets" table="Timesheets">
+        <id name="ident" type="int">
+            <column name="ident" not-null="true" />
+            <generator class="native"/>
+        </id>
+        <many-to-one name="agreements" class="com.ritchey.timesheet.model.Agreements" fetch="select">
+            <column name="AgreementId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="payPer" class="com.ritchey.timesheet.model.PayPer" fetch="select">
+            <column name="periodBegin" length="23" not-null="true" />
+        </many-to-one>
+        <property name="hours" type="big_decimal">
+            <column name="Hours" precision="8" not-null="true" />
+        </property>
+        <property name="rate" type="big_decimal">
+            <column name="Rate" precision="8" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="1" />
+        </property>
+        <property name="entryDate" type="timestamp">
+            <column name="entryDate" length="23" not-null="true" />
+        </property>
+        <property name="lastUpdate" type="timestamp">
+            <column name="lastUpdate" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

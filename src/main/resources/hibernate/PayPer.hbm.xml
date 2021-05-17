@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 6, 2009 11:36:48 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.ritchey.timesheet.model.PayPer" table="PayPer">
+        <id name="payId" type="java.lang.Integer" unsaved-value="null">
+            <column name="payId" not-null="true" />
+             <generator class="native" />
+        </id>
+        <many-to-one name="codeTerm" class="com.ritchey.timesheet.model.CodeTerm" fetch="select">
+            <column name="Term" not-null="true" />
+        </many-to-one>
+        <property name="beginDate" type="timestamp">
+            <column name="Begin_Date" length="23" not-null="true"/>
+        </property>
+        <property name="endDate" type="timestamp">
+            <column name="End_Date" length="23" not-null="true" />
+        </property>
+        <property name="ppYear" type="string">
+            <column name="pp_year" length="4" />
+        </property>
+        <property name="fulltime" type="boolean">
+            <column name="fulltime" sql-type="bit" not-null="true" />
+        </property>
+        <set name="timesheetses" inverse="true" >
+            <key>
+                <column name="periodBegin" length="23" not-null="true" />
+            </key>
+            <one-to-many class="com.ritchey.timesheet.model.Timesheets" />
+        </set>
+    </class>
+</hibernate-mapping>

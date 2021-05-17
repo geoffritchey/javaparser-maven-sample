@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- This is often your domain name (reversed.)  -->
-    <groupId>com.yourorganization</groupId>
+    <groupId>com.ritchey</groupId>
     <!-- The name of this project (actually, the name of the artifact, which is the thing that this project produces. A jar in this case.) -->
     <artifactId>javaparser-maven-sample</artifactId>
     <!-- The version of this project. SNAPSHOT means "we're still working on it" -->
@@ -26,6 +26,23 @@
             <artifactId>javaparser-core</artifactId>
             <version>3.18.0</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-annotations</artifactId>
+    <version>3.5.6-Final</version>
+</dependency>
+
+        
+        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+<dependency>
+    <groupId>javax.persistence</groupId>
+    <artifactId>javax.persistence-api</artifactId>
+    <version>2.2</version>
+</dependency>
+        
     </dependencies>
 
     <!-- This blob of configuration tells Maven to make the jar executable. You can run it with:
@@ -48,7 +65,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.yourorganization.maven_sample.LogicPositivizer</mainClass>
+                                    <mainClass>com.ritchey.maven_sample.LogicPositivizer</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
